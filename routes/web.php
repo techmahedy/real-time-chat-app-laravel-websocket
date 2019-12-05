@@ -7,7 +7,23 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', function () {
 
    return view('welcome');
+
 });
+
+//Notify Route
+Route::get('/notify', function () {
+   
+   $user = \App\User::find(1);
+
+   $user->notify(new \App\Notifications\TaskComplete());
+
+   return view('notify.index');
+});
+Route::get('/markAsRead', function(){
+	auth()->user()->unreadNotifications->markAsRead();
+	return redirect()->back();
+})->name('mark');
+
 
 //AjaxWork Crud Route
 Route::get('/company', 'CompanyController@index')->name('company.index');

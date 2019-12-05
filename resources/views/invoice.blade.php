@@ -7,7 +7,7 @@
 </head>
 <body>
    
-   <p>I love Bangladesh</p>
+   <p>{{ $user->name }}</p>
 
     <div class="container print" id="app">
         <div class="row">
